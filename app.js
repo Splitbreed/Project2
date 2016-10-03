@@ -1,0 +1,9 @@
+var express = require('express');
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+var hbs = require('hbs');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
