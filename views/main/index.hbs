@@ -1,8 +1,14 @@
-<form action="/" method="post">
-  <input type="text" name="title" placeholder='Movie Title'>
-  <input type="submit" name="submit" value="Search">
+<h2>Log In</h2>
+<hr>
+<form action="/login" method="post">
+  <input type="text" name="username" placeholder='Username'>
+  <input type="password" name="password" placeholder='Password'>
+  <input type="submit" name="submit" value="Log In">
 </form>
-{{#if info}}
-  <h4>Title:</h4> <p>{{info.Title}}</p>
-  <h3>Summary:</h3> <p>{{info.Plot}}</p>
-{{/if}}
+<hr>
+<h2>Register</h2>
+<form action="/register" method="post">
+  <input type="text" name="username" placeholder="Username">
+  <input type="password" name="password" placeholder="Password">
+  <input type="submit" name="submit" value="Register">
+</form>

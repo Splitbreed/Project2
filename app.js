@@ -15,7 +15,7 @@ var app = express();
 
 var baseControllers = require('./controllers/index.js');
 
-mongoose.connect('mongodb://localhost/auth-hw');
+mongoose.connect('mongodb://localhost/Proj2');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
