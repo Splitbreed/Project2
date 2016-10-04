@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user.js');
 var Movie = require('../models/movie.js');
@@ -22,7 +24,17 @@ router.post('/register', function(req, res){
   });
 });
 
-router.post('/login', )
+router.post('/login', passport.authenticate('local'), function(req, res){
+  req.session.save(function(err){
+    if (err){
+      console.log(err);
+    }
+    else{
+      res.redirect('/');
+      console.log(req.user.username);
+    }
+  });
+});
 
 // router.post('/', function(req, res){
 //   request('http://www.omdbapi.com/?t='+req.body.title+'&y=&plot=short&r=json', function(err, response, body){
