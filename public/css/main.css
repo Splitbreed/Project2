@@ -1,0 +1,10 @@
+ul,li {
+  list-style: none;
+}
+aside, .add {
+  float: right;
+}
+.req {
+  font-size: 16px;
+  color: red;
+}

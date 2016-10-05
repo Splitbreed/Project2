@@ -1,0 +1,26 @@
+<h2>Hello {{user.username}}</h4>
+
+<h4>What will it be today?</h6>
+
+
+<br><br>
+<aside>
+  <p>Would you like to add a new favorite?</p>
+  <form action="/{{user.username}}/add" method="post">
+    <span class="add"><label for="title">Movie Title<span class="req">*</span>:</label><input type="text" name="title" placeholder="Movie Title"></span>
+    <br>
+    <span class= "add"><label for="Year">Year:</label><input type="text" name="year" placeholder="Year"></span>
+    <br>
+    <input type="submit" name="submit" value="Search">
+    <h6>Fields marks with <span class='req'>*</span> are required</h6>
+  </form>
+</aside>
+<ul>
+{{#each user.favMovies}}
+<li>{{title}}</li>
+<li>{{year}}</li>
+<li>{{genre}}</li>
+<li>{{actors}}</li>
+<li>{{summary}}</li>
+{{/each}}
+</ul>

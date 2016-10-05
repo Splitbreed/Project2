@@ -1,0 +1,13 @@
+<h2>You are viewing {{user.username}}'s profile</h4>
+
+<br><br>
+
+<ul>
+{{#each user.favMovies}}
+<li>{{title}}</li>
+<li>{{year}}</li>
+<li>{{genre}}</li>
+<li>{{actors}}</li>
+<li>{{summary}}</li>
+{{/each}}
+</ul>

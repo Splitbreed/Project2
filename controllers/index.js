@@ -3,6 +3,9 @@ var router = express.Router();
 var request = require('request');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var mongoose = require('mongoose');
+
+var js = require('../public/javascript/main.js')
 
 var User = require('../models/user.js');
 var Movie = require('../models/movie.js');
@@ -41,10 +44,23 @@ router.get('/:username', function(req, res){
   if (!req.user){
     res.redirect('/');
   } else if (req.user && req.user.username == req.params.username){
-    res.render('main/landing.hbs', {user: Users.findById(_id: req.user._id)});
+    res.render('main/landing.hbs', {user: req.user});
+  } else {
+    // if (req.user && req.user.username != req.params.username)
+    User.findOne({username: req.params.username}, function(err, other){
+      console.log(other);
+      res.render('main/notlanding.hbs', {user: other});
+    });
   }
 });
 
+router.post('/:username/add', function(req, res){
+  if(req.body.year){
+    var find = request('http://www.omdbapi.com/?t='+req.body.title+'&y='+req.body.year+'&plot=short&r=json');
+  } else {
+    var findelse = request('http://www.omdbapi.com/?t='+req.body.title+'&y=&plot=short&r=json');
+  }
+});
 // router.post('/', function(req, res){
 //   request('http://www.omdbapi.com/?t='+req.body.title+'&y=&plot=short&r=json', function(err, response, body){
 //     if(err) {
