@@ -7,6 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user.js');
 var Movie = require('../models/movie.js');
 
+
 router.get('/', function(req, res){
   res.render('main/index.hbs')
 });
@@ -30,10 +31,18 @@ router.post('/login', passport.authenticate('local'), function(req, res){
       console.log(err);
     }
     else{
-      res.redirect('/');
+      res.redirect('/'+req.user.username);
       console.log(req.user.username);
     }
   });
+});
+
+router.get('/:username', function(req, res){
+  if (!req.user){
+    res.redirect('/');
+  } else if (req.user && req.user.username == req.params.username){
+    res.render('main/landing.hbs', {user: Users.findById(_id: req.user._id)});
+  }
 });
 
 // router.post('/', function(req, res){
