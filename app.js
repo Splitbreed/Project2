@@ -15,7 +15,9 @@ var app = express();
 
 var baseControllers = require('./controllers/index.js');
 
-mongoose.connect('mongodb://localhost/Proj2');
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/Proj2';
+
+mongoose.connect(mongoURI);
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -38,6 +40,6 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use('/', baseControllers);
 
-app.listen(3000, function(){
-    console.log('Listening on port 3000');
+app.listen(process.env.PORT || 3000, function(){
+    console.log('Listening on port '+process.env.PORT);
 });
