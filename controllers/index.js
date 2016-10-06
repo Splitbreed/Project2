@@ -56,10 +56,19 @@ router.get('/:username', function(req, res){
 
 router.post('/:username/add', function(req, res){
   if(req.body.year){
-    var find = request('http://www.omdbapi.com/?t='+req.body.title+'&y='+req.body.year+'&plot=short&r=json');
+    request('http://www.omdbapi.com/?t='+req.body.title+'&y='+req.body.year+'&plot=short&r=json', function(err, response, body){
+      if (err) console.log(err);
+      var parse = js.parseIt(body);
+    });
   } else {
-    var findelse = request('http://www.omdbapi.com/?t='+req.body.title+'&y=&plot=short&r=json');
+    request('http://www.omdbapi.com/?t='+req.body.title+'&y=&plot=short&r=json', function(err, body, body){
+      if (err) console.log(err);
+      var parse = js.parseIt(body);
+
+    })
   }
+
+
 });
 // router.post('/', function(req, res){
 //   request('http://www.omdbapi.com/?t='+req.body.title+'&y=&plot=short&r=json', function(err, response, body){
