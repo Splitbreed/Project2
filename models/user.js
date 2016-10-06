@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
-var MovieSchema = require('./movie.js');
+var movieSchema = require('./movie.js').movieSchema;
 
 var userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  favMovies: [MovieSchema]
+  favMovies: [movieSchema]
 });
 
 userSchema.plugin(passportLocalMongoose);

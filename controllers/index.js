@@ -46,6 +46,7 @@ router.get('/:username', function(req, res){
   } else if (req.user && req.user.username == req.params.username){
     res.render('main/landing.hbs', {user: req.user});
   } else {
+    console.log(req.user);
     // if (req.user && req.user.username != req.params.username)
     User.findOne({username: req.params.username}, function(err, other){
       console.log(other);
@@ -59,12 +60,21 @@ router.post('/:username/add', function(req, res){
     request('http://www.omdbapi.com/?t='+req.body.title+'&y='+req.body.year+'&plot=short&r=json', function(err, response, body){
       if (err) console.log(err);
       var parse = js.parseIt(body);
+      var toPush = js.addIt(parse);
+      req.user.favMovies.push(toPush);
+      req.user.save();
+      console.log(req.user);
+      res.redirect('/'+req.user.username);
     });
   } else {
     request('http://www.omdbapi.com/?t='+req.body.title+'&y=&plot=short&r=json', function(err, body, body){
       if (err) console.log(err);
       var parse = js.parseIt(body);
-
+      var toPush = js.addIt(parse);
+      req.user.favMovies.push(toPush);
+      req.user.save();
+      console.log(req.user);
+      res.redirect('/'+req.user.username);
     })
   }
 

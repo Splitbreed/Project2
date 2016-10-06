@@ -1,14 +1,17 @@
 var mongoose = require('mongoose');
-var passportLocalMongoose = require('passport-local-mongoose');
 
-var movieSchema = mongoose.Schema({
+var movieSchema = new mongoose.Schema({
   actors: Array,
   title: String,
   year: Number,
   summary: String,
-  Genre: String,
+  genre: String,
   numOfFavs: Number
 });
 
+var movieModel = mongoose.model('Movie', movieSchema);
 
-module.exports = movieSchema
+module.exports = {
+  movieModel: movieModel,
+  movieSchema: movieSchema
+}

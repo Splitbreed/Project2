@@ -8,3 +8,10 @@ aside, .add {
   font-size: 16px;
   color: red;
 }
+.cat {
+  margin: .5% 0 .5% 0;
+}
+.movie {
+  width: 30%;
+  height: 30%;
+}
