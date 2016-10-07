@@ -71,10 +71,15 @@ router.post('/:username/add', function(req, res){
       if (err) console.log(err);
       var parse = js.parseIt(body);
       var toPush = js.addIt(parse);
-      req.user.favMovies.push(toPush);
-      req.user.save();
-      console.log(req.user);
-      res.redirect('/'+req.user.username);
+      var exists = js.exists(toPush, req.user.favMovies);
+      if (exists){
+        res.redirect('/'+req.user.username);
+      } else {
+        req.user.favMovies.push(toPush);
+        req.user.save();
+        res.redirect('/'+req.user.username);
+      }
+
     })
   }
 

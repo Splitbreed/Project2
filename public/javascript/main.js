@@ -14,7 +14,25 @@ var addIt = function(info){
   });
   return ret;
 }
+
+var exists = function(item, arr){
+  // console.log(item);
+  // console.log('--------');
+  // console.log(arr);
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i].title == item.title && arr[i].year == item.year){
+      return true;
+    } else if (arr[i].title == item.title && arr[i].year != item.year){
+      return false;
+    } else if (arr[i].title == item.title){
+      return true;
+    } else if (arr[i].title != item.title){
+      return false;
+    }
+  }
+}
 module.exports = {
   parseIt: parseIt,
-  addIt: addIt
+  addIt: addIt,
+  exists: exists
 }
