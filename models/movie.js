@@ -6,6 +6,8 @@ var movieSchema = new mongoose.Schema({
   year: Number,
   summary: String,
   genre: String,
+  poster: String,
+  imdbId: String,
   numOfFavs: Number
 });
 

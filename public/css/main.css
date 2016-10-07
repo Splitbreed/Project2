@@ -3,6 +3,7 @@ ul,li {
 }
 aside, .add {
   float: right;
+  color: #206f79;
 }
 .req {
   font-size: 16px;
@@ -10,6 +11,7 @@ aside, .add {
 }
 .cat {
   margin: .5% 0 .5% 0;
+  color: black;
 }
 .movie {
   width: 30%;
@@ -17,4 +19,44 @@ aside, .add {
   border: 2px solid black;
   background-color: ivory;
   color: firebrick;
+}
+.moviesall {
+  color: black;
+}
+.user {
+  width: 30%;
+  height: 30%;
+  border: 2px solid #b19cd9;
+  background-color: ivory;
+  color: black;
+}
+body {
+  background-color: #91ffd0;
+}
+h1, h2 {
+  color: #5f9ea0;
+}
+div > h3,h4 {
+  color: #e5e1d6;
+}
+input {
+  background-color: #1a297a;
+  color: white;
+}
+a {
+  text-decoration: none;
+  color: firebrick;
+}
+a:hover {
+  color: blue;
+}
+.center {
+  text-align: center;
+}
+img {
+  width: 60%;
+  height: 80%;
+}
+.all {
+  color: black;
 }

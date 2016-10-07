@@ -1,0 +1,23 @@
+<nav>
+  <a href="/{{user.username}}">Home | </a>
+  <a href="/fullusers">All Users</a>
+</nav>
+<span class="center"><h1>All Users</h1></span>
+<ul>
+{{#each users}}
+<li>
+  <div class = "user">
+    <h3 class ="all">{{username}}</h3>
+    <div class = "moviesall">
+      <h3 class="all">Favorite Movies:</h3>
+      {{#each favMovies}}
+      <p>
+        {{title}}, {{year}}
+      </p>
+      {{/each}}
+    </div>
+    <a href="/{{username}}">Full Profile</a>
+  </div>
+</li>
+{{/each}}
+</ul>

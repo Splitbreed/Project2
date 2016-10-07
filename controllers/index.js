@@ -4,6 +4,7 @@ var request = require('request');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
 
 var js = require('../public/javascript/main.js')
 
@@ -40,17 +41,35 @@ router.post('/login', passport.authenticate('local'), function(req, res){
   });
 });
 
+router.get('/fullusers', function(req, res){
+  if (!req.user){
+    res.redirect('/');
+  } else {
+    var all;
+    User.find({}).exec()
+    .then(function(list){
+      all = list;
+    })
+    .then (function(){
+      res.render('main/allusers', {
+        users: all, user: req.user
+      });
+      console.log(all);
+    })
+  }
+});
+
 router.get('/:username', function(req, res){
   if (!req.user){
     res.redirect('/');
   } else if (req.user && req.user.username == req.params.username){
-    res.render('main/landing.hbs', {user: req.user});
+    res.render('main/landing.hbs', {user: req.user, current: req.user.username});
   } else {
     console.log(req.user);
     // if (req.user && req.user.username != req.params.username)
     User.findOne({username: req.params.username}, function(err, other){
       console.log(other);
-      res.render('main/notlanding.hbs', {user: other});
+      res.render('main/notlanding.hbs', {user: other, current: req.user});
     });
   }
 });
@@ -83,6 +102,12 @@ router.post('/:username/add', function(req, res){
     })
   }
 
+  router.get('/:username/:id', function(req, res){
+    User.find({username: req.params.username}).exec()
+    .then(function(user){
+      console.log(user.favMovies.indexOf(imdbId.req.params.id));
+    })
+  });
 
 });
 // router.post('/', function(req, res){

@@ -1,10 +1,10 @@
 <nav>
-  <a href="/{{user.username}}">Home</a>
+  <a href="/{{user.username}}">Home | </a>
   <a href="/fullusers">All Users</a>
 </nav>
-<h1>Hello {{user.username}}</h4>
+<span class="center"><h1>Hello {{user.username}}</h1></span>
 
-<h2>What will it be today?</h6>
+<span class="center"><h2>What will it be today?</h2></span>
 
 
 <br><br>
@@ -23,10 +23,14 @@
 {{#each user.favMovies}}
 <div class="movie">
   <h3 class="cat">Title: </h3><li>{{title}}</li><br>
+  <a href="http://www.imdb.com/title/{{imdbId}}"><img src="{{poster}}" alt="Poster for {{title}}" /></a>
   <h4 class="cat">Year: </h4><li>{{year}}</li><br>
   <h4 class="cat">Genre: </h4><li>{{genre}}</li><br>
   <h4 class="cat">Actors: </h4><li>{{actors}}</li><br>
   <h4 class="cat">Summary: </h4><li>{{summary}}</li><br>
+  <form action="/{{current}}/{{imdbId}}" method="get">
+    <input type="submit" name="delete" value="Delete">
+  </form>
 </div>
 {{/each}}
 </ul>

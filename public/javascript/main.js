@@ -10,7 +10,9 @@ var addIt = function(info){
     title: info.Title,
     year: info.Year,
     summary: info.Plot,
-    genre: info.Genre
+    genre: info.Genre,
+    poster: info.Poster,
+    imdbId: info.imdbID
   });
   return ret;
 }
