@@ -107,6 +107,11 @@ router.post('/:username/add', function(req, res){
     })
   }
 
+  router.get('/:username/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
   router.delete('/:username/:imid', function (req, res){
     console.log('route works');
   });
