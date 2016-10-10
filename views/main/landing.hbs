@@ -28,8 +28,8 @@
   <h4 class="cat">Genre: </h4><li>{{genre}}</li><br>
   <h4 class="cat">Actors: </h4><li>{{actors}}</li><br>
   <h4 class="cat">Summary: </h4><li>{{summary}}</li><br>
-  <form action="/{{current}}/{{imdbId}}" method="get">
-    <input type="submit" name="delete" value="Delete">
+  <form method="POST" action="/{{../user.username}}/{{imdbId}}?_method=DELETE">
+    <button type="submit" name="delete">Delete</button>
   </form>
 </div>
 {{/each}}

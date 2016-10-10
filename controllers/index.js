@@ -16,6 +16,11 @@ router.get('/', function(req, res){
   res.render('main/index.hbs')
 });
 
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+})
+
 router.post('/register', function(req, res){
   User.register(new User({
     username: req.body.username
@@ -102,12 +107,16 @@ router.post('/:username/add', function(req, res){
     })
   }
 
-  router.get('/:username/:id', function(req, res){
-    User.find({username: req.params.username}).exec()
-    .then(function(user){
-      console.log(user.favMovies.indexOf(imdbId.req.params.id));
-    })
+  router.delete('/:username/:imid', function (req, res){
+    console.log('route works');
   });
+
+  // router.delete('/:username/:id', function(req, res){
+  //   User.find({username: req.params.username}).exec()
+  //   .then(function(user){
+  //     console.log(user.favMovies.indexOf(imdbId.req.params.id));
+  //   })
+  // });
 
 });
 // router.post('/', function(req, res){
